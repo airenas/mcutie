@@ -229,7 +229,7 @@ impl<const A: usize, C: Component> Entity<'_, A, C> {
         let mut payload = Payload::new();
         payload.serialize_json(self).map_err(|_| Error::TooLarge)?;
 
-        publish(&topic, &payload, QoS::AtMostOnce, false).await
+        publish(&topic, &payload, QoS::AtMostOnce, true).await
     }
 
     /// Publishes this entity's state to the broker.
